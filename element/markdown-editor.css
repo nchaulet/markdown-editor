@@ -52,3 +52,17 @@ h2.info {
   background-color: #EDECE4;
 }
 
+/* preview css fix */
+#preview code {
+  background-color: #f1f0ea;
+  padding: 1 3px;
+  border: 1px solid #dddbcc;
+  font-family: Inconsolata,monospace;
+  border-radius: 3px;
+}
+
+#preview pre code {
+  display: block;
+  padding: 5px;
+  margin: 5px;
+}

@@ -11,7 +11,7 @@
 			</div>
 			<div class="block">
 				<h2 class="info">Preview</h2>
-				<div id="preview-content">
+				<div id="preview">
 					{{ preview }}
 				</div>
 			</div>
@@ -24,7 +24,7 @@
   	<script>
     	Polymer('markdown-editor', {
       		ready: function() {
-      			var previewElement  = this.shadowRoot.getElementById('preview-content');
+      			var previewElement  = this.shadowRoot.getElementById('preview');
       			var markdownElement = this.shadowRoot.getElementById('editor');
 
       			var value = this.value;
