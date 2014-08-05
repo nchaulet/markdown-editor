@@ -1,0 +1,54 @@
+:host {
+  display: block;
+  border: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* To ensure your styling works under the Shadow DOM polyfill, see
+   www.polymer-project.org/docs/polymer/styling.html#directives */
+polyfill-next-selector { content: ':host > h2'; }
+::content h2 {
+
+}
+
+#container {
+	width: 100%;
+	min-height: 100px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+}
+
+.block {
+  width: 50%;
+  height: 100%;
+  padding: 5px 10px;
+}
+
+.block:first-child {
+  border-right: 2px solid #EDECE4;
+}
+
+#editor {
+  padding-top: 10px;
+}
+
+h2.info {
+  color: #aaa9a2;
+  font-weight: lighter;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+  font-size: 0.8em;
+}
+
+/* Code mirror redefinition */
+.cm-s-default .cm-header {
+  font-size: 1.5em;
+  color: black;
+}
+
+.CodeMirror-gutters {
+  background-color: #EDECE4;
+}
+

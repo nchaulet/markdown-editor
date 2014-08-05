@@ -1,0 +1,59 @@
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+
+<polymer-element name="markdown-editor" attributes="value" noscript>
+	<template>
+		<link rel="stylesheet" href="../bower_components/codemirror/lib/codemirror.css">
+		<link rel="stylesheet" type="text/css" href="markdown-editor.css"/>
+		<div id="container" layout horizontal>
+			<div class="block">
+				<h2 class="info">Markdown</h2>
+				<div id="editor"></div>
+			</div>
+			<div class="block">
+				<h2 class="info">Preview</h2>
+				<div id="preview-content">
+					{{ preview }}
+				</div>
+			</div>
+		</div>
+	</template>
+
+	<script src="../bower_components/marked/lib/marked.js"></script>
+	<script src="../bower_components/codemirror/lib/codemirror.js"></script>
+	<script src="../bower_components/codemirror/mode/markdown/markdown.js"></script>
+  	<script>
+    	Polymer('markdown-editor', {
+      		ready: function() {
+      			var previewElement  = this.shadowRoot.getElementById('preview-content');
+      			var markdownElement = this.shadowRoot.getElementById('editor');
+
+      			var value = this.value;
+      			if (!value || value == 'undefined') {
+      				value = this.innerHTML;
+      			}
+
+      			var editor = CodeMirror(markdownElement, {
+    				mode: "markdown",
+    				value: value,
+    				lineNumbers: true
+  				});
+
+      			var _this = this;
+
+  				editor.on('changes', function () {
+  					Previewer.reloadPreview();
+  				});
+
+  				var Previewer = {
+  					reloadPreview: function() {
+  						previewElement.innerHTML  = marked(editor.getValue());
+  						_this.value = editor.getValue();
+  					}
+  				}
+
+  				Previewer.reloadPreview();
+  				
+      		}
+    	});
+  	</script>
+</polymer-element>
