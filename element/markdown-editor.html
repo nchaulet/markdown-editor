@@ -1,4 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer.html" />
+<link rel="import" href="../bower_components/core-overlay/core-overlay.html" />
 
 <polymer-element name="markdown-editor" attributes="value" noscript>
 	<template>
@@ -6,6 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="markdown-editor.css"/>
 		<div id="container" layout horizontal>
 			<div class="block">
+				<span id="help" on-click="{{ help }}">?</span>
 				<h2 class="info">Markdown</h2>
 				<div id="editor"></div>
 			</div>
@@ -16,6 +18,16 @@
 				</div>
 			</div>
 		</div>
+		<core-overlay backdrop="true" id="help-dialog">
+			<div id="help-dialog-content">
+				<span class="close" core-overlay-toggle>X</span>
+				<h2>Help</h2>
+  				<div><span class="markdown"># heading</span> : H1 heading</div>
+  				<div><span class="markdown">## heading</span> : H2 heading</div>
+  				<div><span class="markdown">* item</span> : unordered list</div>
+  				<div><span class="markdown">1. item</span> : orderd list</div>
+  			</div>
+		</core-overlay>
 	</template>
 
 	<script src="../bower_components/marked/lib/marked.js"></script>
@@ -44,6 +56,10 @@
   					Previewer.reloadPreview();
   				});
 
+  				this.help = function() {
+  					_this.shadowRoot.getElementById('help-dialog').opened = true;
+  				};
+
   				var Previewer = {
   					reloadPreview: function() {
   						previewElement.innerHTML  = marked(editor.getValue());
@@ -52,7 +68,6 @@
   				}
 
   				Previewer.reloadPreview();
-  				
       		}
     	});
   	</script>

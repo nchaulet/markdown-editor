@@ -36,10 +36,20 @@ polyfill-next-selector { content: ':host > h2'; }
 h2.info {
   color: #aaa9a2;
   font-weight: lighter;
+  margin: 0;
+  padding: 0;
+  font-size: 0.8em;
+}
+
+#help {
+  float: right;
+  color: #aaa9a2;
+  font-weight: lighter;
   text-transform: uppercase;
   margin: 0;
   padding: 0;
   font-size: 0.8em;
+  cursor: pointer;
 }
 
 /* Code mirror redefinition */
@@ -65,4 +75,32 @@ h2.info {
   display: block;
   padding: 5px;
   margin: 5px;
+}
+
+/* Help dialog */
+#help-dialog-content {
+  font-family: 'Open Sans', sans-serif;
+  padding: 10px 30px;
+  color: #fff;
+  min-width: 200px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+
+#help-dialog-content .close {
+  float: right;
+  cursor: pointer;
+}
+
+#help-dialog-content div {
+  margin-bottom: 15px;
+}
+
+#help-dialog-content .markdown {
+  background-color: #f1f0ea;
+  padding: 1 3px;
+  border: 1px solid #dddbcc;
+  font-family: Inconsolata,monospace;
+  border-radius: 3px;
+  color: black;
 }
