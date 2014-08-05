@@ -87,8 +87,16 @@ h2.info {
   border-radius: 5px;
 }
 
+#help-dialog-content h2{
+  margin-top: 5px;
+  position: relative;
+}
+
 #help-dialog-content .close {
-  float: right;
+  padding: 10px;
+  position: absolute;
+  top: 10px;
+  right: 5px;
   cursor: pointer;
 }
 
