@@ -13,9 +13,7 @@
 			</div>
 			<div class="block">
 				<h2 class="info">Preview</h2>
-				<div id="preview">
-					{{ preview }}
-				</div>
+				<div id="preview"></div>
 			</div>
 		</div>
 		<core-overlay backdrop="true" id="help-dialog">
@@ -40,6 +38,7 @@
       			var markdownElement = this.shadowRoot.getElementById('editor');
 
       			var value = this.value;
+      			
       			if (!value || value == 'undefined') {
       				value = this.innerHTML;
       			}
