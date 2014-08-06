@@ -1,7 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html" />
 <link rel="import" href="../bower_components/core-overlay/core-overlay.html" />
 
-<polymer-element name="markdown-editor" attributes="value" noscript>
+<polymer-element name="markdown-editor" attributes="value lineNumbers" noscript>
 	<template>
 		<link rel="stylesheet" href="../bower_components/codemirror/lib/codemirror.css">
 		<link rel="stylesheet" type="text/css" href="markdown-editor.css"/>
@@ -31,43 +31,59 @@
 	<script src="../bower_components/marked/lib/marked.js"></script>
 	<script src="../bower_components/codemirror/lib/codemirror.js"></script>
 	<script src="../bower_components/codemirror/mode/markdown/markdown.js"></script>
-  	<script>
-    	Polymer('markdown-editor', {
-      		ready: function() {
+  <script>
+    Polymer('markdown-editor', {
+    	observe: {
+    		'model.value': 'modelValueChanged'
+    	},
+      ready: function() {
       			var previewElement  = this.shadowRoot.getElementById('preview');
       			var markdownElement = this.shadowRoot.getElementById('editor');
 
-      			var value = this.value;
-      			
-      			if (!value || value == 'undefined') {
-      				value = this.innerHTML;
-      			}
-
       			var editor = CodeMirror(markdownElement, {
-    				mode: "markdown",
-    				value: value,
-    				lineNumbers: true
-  				});
+    				  mode: "markdown",
+    				  lineNumbers: true
+  				  });
 
       			var _this = this;
 
   				editor.on('changes', function () {
-  					Previewer.reloadPreview();
+  					_this.model.setValue(editor.getValue());
   				});
+
+  				this.modelValueChanged = function(oldValue, newValue) {
+  					if (editor.getValue() != newValue) {
+  						editor.setValue(newValue);
+  					}
+
+  					_this.value = newValue;
+  					_this.reloadPreview();
+  				};
+
+  				this.reloadPreview = function() {
+  					previewElement.innerHTML  = marked(editor.getValue());
+  				};
 
   				this.help = function() {
   					_this.shadowRoot.getElementById('help-dialog').opened = true;
   				};
 
-  				var Previewer = {
-  					reloadPreview: function() {
-  						previewElement.innerHTML  = marked(editor.getValue());
-  						_this.value = editor.getValue();
-  					}
-  				}
-
-  				Previewer.reloadPreview();
+  				// INIT
+  				this.model = new MarkdownEditorModel(this.innerHTML);
+      		},
+      		valueChanged: function(oldValue, newValue) {
+      			this.model.setValue(newValue);
       		}
     	});
+
+		var MarkdownEditorModel = function(value) {
+			this.value = value;
+		};
+
+		MarkdownEditorModel.prototype.setValue = function(value) {
+			if (value != this.value) {
+			 this.value = value;	
+			}
+		};
   	</script>
 </polymer-element>
