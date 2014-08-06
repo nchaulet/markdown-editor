@@ -27,8 +27,7 @@ Then use components
 <markdown-editor id="editor">
 # Title
 
-```
-var editorValue = document.getElementById('editor').value;
-```
+`var editorValue = document.getElementById('editor').value;`
+
 </markdown-editor>
 ```
