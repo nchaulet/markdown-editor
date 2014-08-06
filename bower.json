@@ -1,5 +1,6 @@
 {
-  "name": "polymer-editor",
+  "name": "markdown-editor",
+  "main": "element/markdown-editor.html",
   "authors": [
     "Nicolas Chaulet <n.chaulet@gmail.com>"
   ],
