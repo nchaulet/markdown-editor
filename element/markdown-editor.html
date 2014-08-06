@@ -1,9 +1,9 @@
-<link rel="import" href="../bower_components/polymer/polymer.html" />
-<link rel="import" href="../bower_components/core-overlay/core-overlay.html" />
+<link rel="import" href="../../polymer/polymer.html" />
+<link rel="import" href="../../core-overlay/core-overlay.html" />
 
 <polymer-element name="markdown-editor" attributes="value lineNumbers" noscript>
 	<template>
-		<link rel="stylesheet" href="../bower_components/codemirror/lib/codemirror.css">
+		<link rel="stylesheet" href="../../codemirror/lib/codemirror.css">
 		<link rel="stylesheet" type="text/css" href="markdown-editor.css"/>
 		<div id="container" layout horizontal>
 			<div class="block">
@@ -28,9 +28,9 @@
 		</core-overlay>
 	</template>
 
-	<script src="../bower_components/marked/lib/marked.js"></script>
-	<script src="../bower_components/codemirror/lib/codemirror.js"></script>
-	<script src="../bower_components/codemirror/mode/markdown/markdown.js"></script>
+	<script src="../../marked/lib/marked.js"></script>
+	<script src="../../codemirror/lib/codemirror.js"></script>
+	<script src="../../codemirror/mode/markdown/markdown.js"></script>
   <script>
     Polymer('markdown-editor', {
     	observe: {
@@ -86,4 +86,4 @@
 			}
 		};
   	</script>
-</polymer-eleme
+</polymer-element>
