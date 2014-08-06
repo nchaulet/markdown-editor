@@ -37,44 +37,44 @@
     		'model.value': 'modelValueChanged'
     	},
       ready: function() {
-      			var previewElement  = this.shadowRoot.getElementById('preview');
-      			var markdownElement = this.shadowRoot.getElementById('editor');
+      	var previewElement  = this.shadowRoot.getElementById('preview');
+      	var markdownElement = this.shadowRoot.getElementById('editor');
 
-      			var editor = CodeMirror(markdownElement, {
-    				  mode: "markdown",
-    				  lineNumbers: true
-  				  });
+      	var editor = CodeMirror(markdownElement, {
+    			mode: "markdown",
+    			lineNumbers: true
+  			});
 
-      			var _this = this;
+      	var _this = this;
 
-  				editor.on('changes', function () {
-  					_this.model.setValue(editor.getValue());
-  				});
+			  editor.on('changes', function () {
+				 _this.model.setValue(editor.getValue());
+			  });
 
-  				this.modelValueChanged = function(oldValue, newValue) {
-  					if (editor.getValue() != newValue) {
-  						editor.setValue(newValue);
-  					}
+			  this.modelValueChanged = function(oldValue, newValue) {
+				  if (editor.getValue() != newValue) {
+					 editor.setValue(newValue);
+				  }
 
-  					_this.value = newValue;
-  					_this.reloadPreview();
-  				};
+  				_this.value = newValue;
+  				_this.reloadPreview();
+  			};
 
-  				this.reloadPreview = function() {
-  					previewElement.innerHTML  = marked(editor.getValue());
-  				};
+  			this.reloadPreview = function() {
+  				previewElement.innerHTML  = marked(editor.getValue());
+  			};
 
-  				this.help = function() {
-  					_this.shadowRoot.getElementById('help-dialog').opened = true;
-  				};
+  			this.help = function() {
+  				_this.shadowRoot.getElementById('help-dialog').opened = true;
+  			};
 
-  				// INIT
-  				this.model = new MarkdownEditorModel(this.innerHTML);
-      		},
-      		valueChanged: function(oldValue, newValue) {
-      			this.model.setValue(newValue);
-      		}
-    	});
+  			// INIT
+  			this.model = new MarkdownEditorModel(this.innerHTML);
+      },
+      valueChanged: function(oldValue, newValue) {
+      	this.model.setValue(newValue);
+      }
+    });
 
 		var MarkdownEditorModel = function(value) {
 			this.value = value;
@@ -86,4 +86,4 @@
 			}
 		};
   	</script>
-</polymer-element>
+</polymer-eleme
