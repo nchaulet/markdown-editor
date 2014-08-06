@@ -18,7 +18,7 @@ In your head include component and platform.js
 ```html
 <head>
 	<script src="bower_components/platform/platform.js"></script>
-	<link rel="import" href="bower_components/markdown-editor/element/markdown-editor.html" />
+	<link rel="import" href="bower_components/markdown-editor/markdown-editor.html" />
 </head>
 ```
 

@@ -1,5 +1,5 @@
-<link rel="import" href="../../polymer/polymer.html" />
-<link rel="import" href="../../core-overlay/core-overlay.html" />
+<link rel="import" href="../polymer/polymer.html" />
+<link rel="import" href="../core-overlay/core-overlay.html" />
 
 <!--
 Provides a markdown editor with preview. (ghost inspired)
@@ -17,7 +17,7 @@ Example:
 -->
 <polymer-element name="markdown-editor" attributes="value" noscript>
     <template>
-        <link rel="stylesheet" href="../../codemirror/lib/codemirror.css">
+        <link rel="stylesheet" href="../codemirror/lib/codemirror.css">
         <link rel="stylesheet" type="text/css" href="markdown-editor.css"/>
         <div id="container" layout horizontal>
             <div class="block">
@@ -42,9 +42,9 @@ Example:
         </core-overlay>
     </template>
 
-    <script src="../../marked/lib/marked.js"></script>
-    <script src="../../codemirror/lib/codemirror.js"></script>
-    <script src="../../codemirror/mode/markdown/markdown.js"></script>
+    <script src="../marked/lib/marked.js"></script>
+    <script src="../codemirror/lib/codemirror.js"></script>
+    <script src="../codemirror/mode/markdown/markdown.js"></script>
     <script>
         Polymer('markdown-editor', {
             observe: {
