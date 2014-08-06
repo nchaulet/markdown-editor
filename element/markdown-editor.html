@@ -1,6 +1,20 @@
 <link rel="import" href="../../polymer/polymer.html" />
 <link rel="import" href="../../core-overlay/core-overlay.html" />
 
+<!--
+Provides a markdown editor with preview. (ghost inspired)
+This component use Codemirror as editor and marked.js for parse markdown.
+Example:
+
+    <markdown-editor id="editor">
+    # H1
+
+    Lipsum ...
+    </markdown-editor>
+
+@element markdown-editor
+@homepage http://nchaulet.github.io/markdown-editor/
+-->
 <polymer-element name="markdown-editor" attributes="value" noscript>
     <template>
         <link rel="stylesheet" href="../../codemirror/lib/codemirror.css">
@@ -36,6 +50,14 @@
             observe: {
                 'model.value': 'modelValueChanged'
             },
+            /**
+            * This property return current markdown value
+            *
+            * @attribute value
+            * @type string
+            * @default ""
+            */
+            value: '',
             ready: function() {
                 var previewElement  = this.shadowRoot.getElementById('preview');
                 var markdownElement = this.shadowRoot.getElementById('editor');
