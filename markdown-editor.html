@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html" />
 <link rel="import" href="../core-overlay/core-overlay.html" />
+<link rel="import" href="markdown-preview.html" />
 
 <!--
 Provides a markdown editor with preview. (ghost inspired)
@@ -27,7 +28,7 @@ Example:
             </div>
             <div class="block">
                 <h2 class="info">Preview</h2>
-                <div id="preview"></div>
+                <markdown-preview id="preview" value="{{ value }}"/>
             </div>
         </div>
         <core-overlay backdrop="true" id="help-dialog">
@@ -42,7 +43,6 @@ Example:
         </core-overlay>
     </template>
 
-    <script src="../marked/lib/marked.js"></script>
     <script src="../codemirror/lib/codemirror.js"></script>
     <script src="../codemirror/mode/markdown/markdown.js"></script>
     <script>
@@ -59,7 +59,6 @@ Example:
             */
             value: '',
             ready: function() {
-                var previewElement  = this.shadowRoot.getElementById('preview');
                 var markdownElement = this.shadowRoot.getElementById('editor');
 
                 var editor = CodeMirror(markdownElement, {
@@ -75,15 +74,10 @@ Example:
 
                 this.modelValueChanged = function(oldValue, newValue) {
                     if (editor.getValue() != newValue) {
-                    editor.setValue(newValue);
+                        editor.setValue(newValue);
                     }
 
                     _this.value = newValue;
-                    _this.reloadPreview();
-                };
-
-                this.reloadPreview = function() {
-                    previewElement.innerHTML  = marked(editor.getValue());
                 };
 
                 this.help = function() {
