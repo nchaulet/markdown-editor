@@ -1,0 +1,105 @@
+<link rel="import" href="../polymer/polymer.html" />
+<link rel="import" href="../core-overlay/core-overlay.html" />
+<link rel="import" href="markdown-preview.html" />
+
+<!--
+Provides a markdown editor with preview. (ghost inspired)
+This component use Codemirror as editor and marked.js for parse markdown.
+Example:
+
+    <markdown-editor id="editor">
+    # H1
+
+    Lipsum ...
+    </markdown-editor>
+
+@element markdown-editor
+@homepage http://nchaulet.github.io/markdown-editor/
+-->
+<polymer-element name="markdown-editor" attributes="value" noscript>
+    <template>
+        <link rel="stylesheet" href="../codemirror/lib/codemirror.css">
+        <link rel="stylesheet" type="text/css" href="markdown-editor.css"/>
+        <div id="container" layout horizontal>
+            <div class="block">
+                <span id="help" on-click="{{ help }}">?</span>
+                <h2 class="info">Markdown</h2>
+                <div id="editor"></div>
+            </div>
+            <div class="block">
+                <h2 class="info">Preview</h2>
+                <markdown-preview id="preview" value="{{ value }}"/>
+            </div>
+        </div>
+        <core-overlay backdrop="true" id="help-dialog">
+            <div id="help-dialog-content">
+                <span class="close" core-overlay-toggle>X</span>
+                <h2>Help</h2>
+                <div><span class="markdown"># heading</span> : H1 heading</div>
+                <div><span class="markdown">## heading</span> : H2 heading</div>
+                <div><span class="markdown">* item</span> : unordered list</div>
+                <div><span class="markdown">1. item</span> : orderd list</div>
+            </div>
+        </core-overlay>
+    </template>
+
+    <script src="../codemirror/lib/codemirror.js"></script>
+    <script src="../codemirror/mode/markdown/markdown.js"></script>
+    <script>
+        Polymer('markdown-editor', {
+            observe: {
+                'model.value': 'modelValueChanged'
+            },
+            /**
+            * This property return current markdown value
+            *
+            * @attribute value
+            * @type string
+            * @default ""
+            */
+            value: '',
+            ready: function() {
+                var markdownElement = this.shadowRoot.getElementById('editor');
+
+                var editor = CodeMirror(markdownElement, {
+                    mode: "markdown",
+                    lineNumbers: true
+                });
+
+                var _this = this;
+
+                editor.on('changes', function () {
+                    _this.model.setValue(editor.getValue());
+                });
+
+                this.modelValueChanged = function(oldValue, newValue) {
+                    if (editor.getValue() != newValue) {
+                        editor.setValue(newValue);
+                    }
+
+                    _this.value = newValue;
+                };
+
+                this.help = function() {
+                    _this.shadowRoot.getElementById('help-dialog').opened = true;
+                };
+
+                // INIT
+                this.model = new MarkdownEditorModel(this.innerHTML);
+            },
+            valueChanged: function(oldValue, newValue) {
+                this.model.setValue(newValue);
+            }
+        });
+
+        var MarkdownEditorModel = function(value) {
+            this.value = value;
+        };
+
+        MarkdownEditorModel.prototype.setValue = function(value) {
+            if (value != this.value) {
+                this.value = value;    
+            }
+        };
+    </script>
+</polymer-element>

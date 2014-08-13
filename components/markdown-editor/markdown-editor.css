@@ -1,0 +1,100 @@
+:host {
+  display: block;
+  border: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* To ensure your styling works under the Shadow DOM polyfill, see
+   www.polymer-project.org/docs/polymer/styling.html#directives */
+polyfill-next-selector { content: ':host > h2'; }
+::content h2 {
+
+}
+
+#container {
+	width: 100%;
+	min-height: 100px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+}
+
+.block {
+  width: 50%;
+  height: 100%;
+  padding: 5px 10px;
+}
+
+.block:first-child {
+  border-right: 2px solid #EDECE4;
+}
+
+#editor {
+  padding-top: 10px;
+}
+
+h2.info {
+  color: #aaa9a2;
+  font-weight: lighter;
+  margin: 0;
+  padding: 0;
+  font-size: 0.8em;
+}
+
+#help {
+  float: right;
+  color: #aaa9a2;
+  font-weight: lighter;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+/* Code mirror redefinition */
+.cm-s-default .cm-header {
+  font-size: 1.5em;
+  color: black;
+}
+
+.CodeMirror-gutters {
+  background-color: #EDECE4;
+}
+
+/* Help dialog */
+#help-dialog-content {
+  font-family: 'Open Sans', sans-serif;
+  padding: 10px 30px;
+  color: #fff;
+  min-width: 200px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#help-dialog-content h2{
+  margin-top: 5px;
+  position: relative;
+}
+
+#help-dialog-content .close {
+  padding: 10px;
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  cursor: pointer;
+}
+
+#help-dialog-content div {
+  margin-bottom: 15px;
+}
+
+#help-dialog-content .markdown {
+  background-color: #f1f0ea;
+  padding: 1 3px;
+  border: 1px solid #dddbcc;
+  font-family: Inconsolata,monospace;
+  border-radius: 3px;
+  color: black;
+}

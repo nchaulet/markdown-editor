@@ -1,0 +1,31 @@
+<link rel="import" href="../../polymer/polymer.html" />
+<link rel="import" href="../../core-overlay/core-overlay.html" />
+
+<!--
+Provides a preview. 
+This component use marked.js for parse markdown.
+Example:
+
+    <markdown-preview id="editor" value="# Title"></markdown-editor>
+
+@element markdown-editor
+@homepage http://nchaulet.github.io/markdown-editor/
+-->
+<polymer-element name="markdown-preview" attributes="value" noscript>
+    <template>
+        <link rel="stylesheet" type="text/css"  href="../github-markdown-css/github-markdown.css" />
+        <div id="preview" class="markdown-body"></div>
+    </template>
+
+    <script src="../marked/lib/marked.js"></script>
+    <script>
+        Polymer('markdown-preview', {
+            ready: function() {
+                this.previewElement  = this.shadowRoot.getElementById('preview');
+            },
+            valueChanged: function(oldValue, newValue) {
+                this.previewElement.innerHTML  = marked(newValue);
+            }
+        });
+    </script>
+</polymer-element>

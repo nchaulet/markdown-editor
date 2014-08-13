@@ -1,0 +1,22 @@
+{
+  "name": "markdown-editor",
+  "main": "element/markdown-editor.html",
+  "authors": [
+    "Nicolas Chaulet <n.chaulet@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.3.4",
+    "marked": "~0.3.2",
+    "codemirror": "~4.4.0",
+    "core-overlay": "Polymer/core-overlay#~0.3.4",
+    "github-markdown-css": "~1.0.1"
+  }
+}

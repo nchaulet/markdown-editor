@@ -1,0 +1,7 @@
+{
+  "name": "markdown-editor#gh-pages",
+  "private": true,
+  "dependencies": {
+    "markdown-editor": "nchaulet/markdown-editor#master"
+  }
+}

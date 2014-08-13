@@ -1,0 +1,33 @@
+{
+  "name": "markdown-editor",
+  "main": "element/markdown-editor.html",
+  "authors": [
+    "Nicolas Chaulet <n.chaulet@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.3.4",
+    "marked": "~0.3.2",
+    "codemirror": "~4.4.0",
+    "core-overlay": "Polymer/core-overlay#~0.3.4",
+    "github-markdown-css": "~1.0.1"
+  },
+  "homepage": "https://github.com/nchaulet/markdown-editor",
+  "_release": "cbbcba3244",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "cbbcba32447fd7f58c33fa2574c1ac5902458f6a"
+  },
+  "_source": "git://github.com/nchaulet/markdown-editor.git",
+  "_target": "master",
+  "_originalSource": "nchaulet/markdown-editor",
+  "_direct": true
+}
