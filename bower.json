@@ -4,6 +4,7 @@
   "authors": [
     "Nicolas Chaulet <n.chaulet@gmail.com>"
   ],
+  "keywords": ["web-components"],
   "license": "MIT",
   "ignore": [
     "**/.*",
